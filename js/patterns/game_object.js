@@ -1,10 +1,15 @@
-function GameObject(width, height, x, y){
+function GameObject(context, width, height, x, y){
+
+	// Canvas Context
+	var context = context;
 
 	var width = this.setWidth(width);
 	var height = this.setHeight(height);
 
 	var x = this.setX(x);
 	var y = this.setY(y);
+
+	var image;
 }
 
 // Getters and Setters
@@ -52,4 +57,17 @@ GameObject.prototype.getY = function(){
 	return y;
 }
 
+GameObject.prototype.setImageSrc = function(imgSrc){
+	image = new Image();
+	image.src = imgSrc;
+}
+
 //////// End getters and setters
+
+GameObject.prototype.draw = function(){
+	canvasContext.drawImage(image, x, y);
+}
+
+GameObject.prototype.update = function(){
+	//context.fillRect
+}
