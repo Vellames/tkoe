@@ -1,54 +1,49 @@
-function ScenaryManager(){
-	// Singleton
-	var instance;
-	ScenaryManager = function(){
-		return instance;
-	}
-	instance = this;
+function ScenaryManager(){}
 
-	
+ScenaryManager.mapConfig = {
+    columns : 16,
+    rows : 16,
+    tilesWidth : 100,
+    tilesHeight: 100,
+
+    tiles: [
+        {
+            name: "grass",
+            percentage: 100,
+            objects : [
+                {
+                    name: "tree1",
+                    min: 4,
+                    max: 8
+                },
+                {
+                    name: "tree2",
+                    min: 4,
+                    max: 8
+                },
+                {
+                    name: "tree3",
+                    min: 4,
+                    max: 8
+                },
+                {
+                    name: "trunk",
+                    min: 2,
+                    max: 6
+                }
+            ]
+        }
+    ]
 }
 
-generateMapArray(
- {
-		columns : 16,
-		rows : 16,
-		tilesSize : "100x100",
+var mapConfig = ScenaryManager.mapConfig;
 
-		tiles: [
-			{
-				name: "grass",
-				percentage: 100,
-				objects : [
-					{
-						name: "tree1",
-						min: 4,
-						max: 8
-					},
-					{
-						name: "tree2",
-						min: 4,
-						max: 8
-					},
-					{
-						name: "tree3",
-						min: 4,
-						max: 8
-					},
-					{
-						name: "trunk",
-						min: 2,
-						max: 6
-					}
-				]
-			}
-		]
-	}
-)
 
-function generateMapArray(mapConfig){
-
-	var mapArray = initializeArray(mapConfig);
+/**
+    Generate the map of game in array forms
+*/
+ScenaryManager.generateMapArray = function(){
+    var mapArray = initializeArray(mapConfig);
 
 	var grassPositions = [];
 
@@ -96,8 +91,9 @@ function generateMapArray(mapConfig){
 	return mapArray;
 }
 
+// Private functions
 
-function initializeArray(mapConfig){
+var initializeArray = function (mapConfig){
 	var mapArray = [];
 
 	for(var column = 0; column < mapConfig.columns; column++){
