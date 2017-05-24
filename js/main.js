@@ -38,17 +38,26 @@ function drawScenary(){
                     const x = column * mapConfig.tilesWidth;
                     const y = row * mapConfig.tilesHeight;
                     
-                    // Fazer funcionar sem instanciar um grass tile todas as vzs
-                    //console.log(element.tileInstance);
-                    //if(element.tileInstance == undefined){
-                    //    element.tileInstance = new GrassTile(canvasContext, mapConfig.tilesWidth, mapConfig.tilesHeight, x , y);
-                    //}
-                    //element.tileInstance.draw();
+                    // Instance the grass
+                    if(element.tileInstance == undefined){
+                        element.tileInstance = new GrassTile(canvasContext, mapConfig.tilesWidth, mapConfig.tilesHeight, x , y);
+                    }
+                    element.tileInstance.draw();
                     
-                    const grass = new GrassTile(canvasContext, mapConfig.tilesWidth, mapConfig.tileHeight, x , y);
-                    grass.draw();
+                    // Instance the object
+                    if(element.object != undefined && element.objectInstance == undefined){
+                        const object = element.object;
+                        element.objectInstance = new window[object](canvasContext, mapConfig.tilesWidth, mapConfig.tilesHeight, x , y);
+                    }
+                    
+                    if(element.objectInstance != undefined){
+                        element.objectInstance.draw();   
+                    }
+                    
+                    
                     break;
             }
+            
         }
     }
 }

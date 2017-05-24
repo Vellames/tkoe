@@ -1,15 +1,15 @@
-function GameObject(context, width, height, x, y){
+ function GameObject(context, width, height, x, y){
 
 	// Canvas Context
-	var context = context;
+	this.context = context;
 
-	var width = this.setWidth(width);
-	var height = this.setHeight(height);
+	this.width = this.setWidth(width);
+	this.height = this.setHeight(height);
 
-	var x = this.setX(x);
-	var y = this.setY(y);
+	this.x = this.setX(x);
+	this.y = this.setY(y);
 
-	var image;
+	this.image;
 }
 
 // Getters and Setters
@@ -17,55 +17,59 @@ GameObject.prototype.setWidth = function(widthParam) {
 	if(!(widthParam >= 0)){
 		widthParam = 0;
 	}
-	width = widthParam
+	this.width = widthParam
+    return this.width;
 };
 
 GameObject.prototype.getWidth = function() {
-	return width;
+	return this.width;
 };
 
 GameObject.prototype.setHeight = function(heightParam){
 	if(!(heightParam >= 0)){
 		heightParam = 0;
 	}
-	height = heightParam;
+	this.height = heightParam;
+    return this.height;
 }
 
 GameObject.prototype.getHeight = function(){
-	return height;
+	return this.height;
 }
 
 GameObject.prototype.setX = function(xParam){
 	if(!(xParam >= 0)){
 		xParam = 0;
 	}
-	x = xParam
+	this.x = xParam
+    return this.x
 }
 
 GameObject.prototype.getX = function(){
-	return x;
+	return this.x;
 }
 
 GameObject.prototype.setY = function(yParam){
 	if(!(yParam >= 0)){
 		yParam = 0;
 	}
-	y = yParam;
+	this.y = yParam;
+    return this.y;
 }
 
 GameObject.prototype.getY = function(){
-	return y;
+	return this.y;
 }
 
 GameObject.prototype.setImageSrc = function(imgSrc){
-	image = new Image();
-	image.src = imgSrc;
+	this.image = new Image();
+	this.image.src = imgSrc;
 }
 
 //////// End getters and setters
 
 GameObject.prototype.draw = function(){
-	canvasContext.drawImage(image, x, y);
+	canvasContext.drawImage(this.image, this.x, this.y);
 }
 
 GameObject.prototype.update = function(){

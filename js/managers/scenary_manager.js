@@ -12,24 +12,24 @@ ScenaryManager.mapConfig = {
             percentage: 100,
             objects : [
                 {
-                    name: "tree1",
-                    min: 4,
-                    max: 8
+                    name: "Tree1",
+                    min: 15,
+                    max: 20
                 },
                 {
-                    name: "tree2",
-                    min: 4,
-                    max: 8
+                    name: "Tree2",
+                    min: 10,
+                    max: 15
                 },
                 {
-                    name: "tree3",
-                    min: 4,
-                    max: 8
+                    name: "Tree3",
+                    min: 10,
+                    max: 15
                 },
                 {
-                    name: "trunk",
-                    min: 2,
-                    max: 6
+                    name: "Trunk",
+                    min: 10,
+                    max: 20
                 }
             ]
         }
@@ -55,7 +55,8 @@ ScenaryManager.generateMapArray = function(){
 			var tile = "grass";
 
 			position[j] = {
-				tile: tile
+				tile: tile,
+                tileInstance: null
 			}
 
 			grassPositions.push({column: i, row: j});
